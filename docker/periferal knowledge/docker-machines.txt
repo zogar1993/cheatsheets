@@ -1,0 +1,9 @@
+docker-machine ls: lists all docker machines
+docker-machine create <name>: creates docker machine <name>
+docker-machine start <name>: starts docker machine <name>
+docker-machine stop <name>: stops docker machine <name>
+docker-machine env <name>: gets command to run in de docker machine
+docker-machine active: tells you which docker machine you are talking to
+docker version
+docker-machine ip <name>: gets the ip of the docker machine <name>
+docker-machine (--driver [hypervisor]) <name>: 

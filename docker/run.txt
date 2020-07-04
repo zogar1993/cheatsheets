@@ -1,0 +1,46 @@
+docker container run <image_name>
+//docker container run crea un nuevo container cada vez
+
+docker container run hello-world (test image provided by docker to test instalation)
+
+docker container run --name <container_id> <image_name>
+docker container run --ip <docker_machine_ip> -p <local_port>:<container_port> <image_name>
+docker container run -p 80:80 -v <local_directory>:<container_directory> nginx
+docker container run -p 80:80 --volume <local_directory>:<container_directory> nginx (lo mismo que el anterior)
+docker container run -p 80:80 -v <local_directory>:<container_directory>:ro nginx (ro al final explicita que es read only)
+docker container run -p 80:80 --mount type=bind,src=<local_directory>,destination=<container_directory>,readonly nginx (igual a la anterior, destination puede cambiarse por dst)
+
+//la diferencia entre un bind mount y un volume es que el volume es gestionado por docker, el bind mount for el filesystem del os del host por lo que entendi
+docker container run --mount type=volume,src=<local_directory>,destination=<container_directory>,readonly nginx (se crea un volume, si no se pone volume, igual va por defecto)
+docker container run -p 80:80 --volume <container_directory> nginx (en vez de hacer un bind mount, crea un volume)
+
+--volumes-from <container_name> -> mounts all volumes from <container_name>
+
+--publish (<local_ip>:)?<local_port>:<container_port>
+//also -p
+//may specify ranges for ports with <from_port>-<to_port>
+//repeatable
+//if no localport is designed, a random localport will be set
+
+--rm
+//auto delete container on exit
+
+--link <container_name>(:<alias>)?
+//deprecated
+//makes <container_name> visible from this container
+//if <container_name> is stopped and restarted, a new ip will be given to it, so link will break
+
+--network <network_name>
+//preferred to link alternative
+//attaches a container to a user defined network
+//links can still be used to define aliases
+
+--network-alias <network_alias>
+// To make sure that multiple containers providing a service can be reached via the same name.
+
+-e
+//lets you set environment variables to a container
+//may use local variables if only the key is set
+
+--env-file <env_file_path>
+//setea las env variables de un archivo

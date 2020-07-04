@@ -1,0 +1,8 @@
+hostname = nombre del host
+ps = Muestra una instantánea de los procesos actuales.
+ln -s <to> <from> = crea un link de <from> a <to>
+pwd = print working directory
+$(<command>) = permite usar el string output de <command> en otro comando
+touch <path> = crea un archivo en <path>
+mkdir <path> = crea un fichero en <path>
+nslookup = shows all network aliases

@@ -1,0 +1,25 @@
+RUN WITH SH
+docker container run alpine sh (no hace nada)
+docker container run -it alpine sh (ahi funciona, i permite interactuar con el shell, t le adjunta el prompt)
+
+ATTACH/DETACH
+docker container run -itd alpine sh (lo crea detacheado por la d)
+ctrl + D = salir
+al ser sh el proceso primario del container, y este morir, muere el container
+ctrl + P + Q = detach
+docker container attach <image_name>
+
+EXEC
+docker container exec <container_name> <command>
+
+STOP
+docker container stop <container_name> (Sends SIGTERM, tries to shut down gracefully, and kills if 10 seconds pass)
+docker container kill <container_name> (Sends SIGKILL)
+
+LOGS
+// it is best practice that containers do not write log files
+// all output should go to STDOUT or STDERR
+// STDOUT is in a file named /dev/stdout
+// STDERR is in a file named /dev/stderr
+docker container logs <container_name>
+docker container logs -f <container_name> (se queda pegado e imprimiendo nuevos logs)

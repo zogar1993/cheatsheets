@@ -1,0 +1,18 @@
+# -> comment
+FROM -> imagen de la que hereda
+RUN (shell commands)
+CMD no me quedo clara la diferencia entre cmd y run
+//En CMD es preferible usar el formato exec que el shell
+VOLUME <destination_path> -> monta un volume
+COPY <build_path>+ <destination_path> -> copia el contenido al conetenedor (recomended when posible)
+ADD (<build_path>|<remote_url>) <destination_path> -> copia el contenido al conetenedor
+//descoprime si es un tar, puede buscar coosas en remote urls.
+
+EXPOSE <PORT>
+//No autopublica, es meramente documentación de donde la imagen expone un servicio.
+
+ENV( <KEY>="<STRING>")+
+//Establece variables de entorno para el container
+
+.dockerignore
+//en un archivo de este nombre el build path se ponen los path que van a ser excluidos del build context

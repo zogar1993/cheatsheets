@@ -1,0 +1,7 @@
+docker image pull <image_name> (automatically done by docker container run)
+docker image ls = lista las imagenes, como alpine o xentos, las que son reutilizadas
+
+Dockerfile = nombre del archivo al que le da bola docker
+docker image build -t myalpine:latest . = crea la imagen con el conetnidode Dockerfile
+docker image tag myalpine:latest zogar1993/myalpine:latest
+docker image push zogar1993/myalpine:latest

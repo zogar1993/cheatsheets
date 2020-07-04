@@ -1,0 +1,21 @@
+docker container ls = lista los containers vivos
+docker container ls -a = lista todos los containers
+docker container stop <name> = stopea un container creado
+docker container start <name> = startea un container creado
+docker container rm <container_id>
+docker container rm $(docker container ls -aq) (remueve todos los containers)
+docker container kill <container_name>
+
+network image ls
+docker container run --network <network_name> nginx
+(when in the same user defined network, containers can reference each other by name)
+
+export DOCKER_HIDE_LEGACY_COMMANDS=true
+
+docker plugin install <plugin_name>
+
+docker login <3d_party_registry>
+
+CONCEPTS
+Containers run in isolation thanks to  the linux feature "namespaces"
+net, pid and mnt (mount) are namespaces used to achieve isolation.

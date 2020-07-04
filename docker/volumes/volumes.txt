@@ -1,0 +1,10 @@
+docker volume create <volume_create>
+docker volume ls
+docker volume rm <volume_name>
+docker volume inspect <volume_name>
+
+//los volumes persisten aun luego de ser eliminados los containers que los usan
+//un volume unicamente se autodestruye si es creado anonimamente por un docker container creado con --rm
+
+//cuando montas un nuevo volume en un path que ya tenia archivos, esos archivos se copian al volume
+//cuando montas un volume existente en un path que ya tenia archivos, solo podras ver los valores del volume (no los preexistentes del path)
