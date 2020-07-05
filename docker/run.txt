@@ -38,7 +38,7 @@ docker container run -p 80:80 --volume <container_directory> nginx (en vez de ha
 --network-alias <network_alias>
 // To make sure that multiple containers providing a service can be reached via the same name.
 
--e
+-e "(<key>=<value> | <local_environment_variable>)"
 //lets you set environment variables to a container
 //may use local variables if only the key is set
 
