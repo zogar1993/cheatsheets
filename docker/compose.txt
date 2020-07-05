@@ -1,0 +1,4 @@
+dpcker compose creates a user defined network, and all containers get attached to it
+
+docker-compose down
+docker-compose up

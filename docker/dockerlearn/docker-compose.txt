@@ -1,0 +1,14 @@
+version: '3.3'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./html:/usr/share/nginx/html
+  pg: image: postgres:9.6-alpine
+  # environment:
+  #   - POSTGRTES_DB=test
+  env_file:
+    - ./db.env
