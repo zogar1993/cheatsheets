@@ -7,8 +7,10 @@ FROM <image_tag|image_digest> (as <name>)?
 //multistage builds are useful when you have have various images that you need to inherit from
 
 RUN (shell commands, happen and compile time)
+
 CMD (prompt commands, happen and run time)
 //En CMD es preferible usar el formato exec que el shell
+
 VOLUME <destination_path> -> monta un volume
 
 
@@ -31,9 +33,6 @@ ENV (<KEY>="<STRING>")+
 
 WORKDIR <directory>
 
-.dockerignore
-//en un archivo de este nombre el build path se ponen los path que van a ser excluidos del build context
-
 USER <user>
 //changes the user
 //could be used after 'RUN adduser -u 1000 -D <user>' to prevent later RUN and CMD from having root access
@@ -54,6 +53,9 @@ ONBUILD
 STOPSIGNAL <signal>
 //default is SIGTERM
 //determines which signal is sent to the process if it wishes to terminate
+
+.dockerignore
+//en un archivo de este nombre el build path se ponen los path que van a ser excluidos del build context
 
 CONCEPTS
 You have to clean after yourself when downloading an app. // rm -rf /var/cache/apk*
