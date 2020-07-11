@@ -44,3 +44,30 @@ docker container run -p 80:80 --volume <container_directory> nginx (en vez de ha
 
 --env-file <env_file_path>
 //setea las env variables de un archivo
+
+--memory <value>
+//max memory available for the container
+//example: 256M
+
+--cpus <value>
+//max cpu usage.
+//example: 0.25
+
+--memory-reservation <value>
+//tries to always have this amount of memory for the container
+//example: 256M
+
+--cpu-shares <value>
+//example: 1024
+
+--tmpfs <path>
+//creates volatile memory at that path (in ram memory)
+
+--mount <value>
+type=volume|bind|tmpfs (volume is default)
+src=<local_directory>
+destination=<container_directory>
+readonly (optional)
+
+--read-only
+//cant write to the containers filesystem

@@ -1,10 +1,4 @@
-docker container ls = lista los containers vivos
-docker container ls -a = lista todos los containers
-docker container stop <name> = stopea un container creado
-docker container start <name> = startea un container creado
-docker container rm <container_id>
-docker container rm $(docker container ls -aq) (remueve todos los containers)
-docker container kill <container_name>
+
 
 network image ls
 docker container run --network <network_name> nginx
@@ -19,3 +13,8 @@ docker login <3d_party_registry>
 CONCEPTS
 Containers run in isolation thanks to  the linux feature "namespaces"
 net, pid and mnt (mount) are namespaces used to achieve isolation.
+Images contain layer and metadata
+Only COPY, ADD and RUN create layers, other commands create metadata.
+The writable layer is used when the container produces data that does not go to a volume.
+"Control Groups" let you limit the resources a container may use.
+"Kernel capabilities" lets restrict permisions to users inside containers.

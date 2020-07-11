@@ -1,18 +1,63 @@
 # -> comment
-FROM -> imagen de la que hereda
-RUN (shell commands)
-CMD no me quedo clara la diferencia entre cmd y run
+
+FROM <image_tag|image_digest> (as <name>)?
+//imagen de la que hereda
+//if there are multiple FROM in a Dockerfile, it is a multistage build
+//multistage builds are useful when you have dependencies at build time that you dont need at runtime
+//multistage builds are useful when you have have various images that you need to inherit from
+
+RUN (shell commands, happen and compile time)
+CMD (prompt commands, happen and run time)
 //En CMD es preferible usar el formato exec que el shell
 VOLUME <destination_path> -> monta un volume
-COPY <build_path>+ <destination_path> -> copia el contenido al conetenedor (recomended when posible)
-ADD (<build_path>|<remote_url>) <destination_path> -> copia el contenido al conetenedor
+
+
+COPY <build_path>+ <destination_path>
+//copia el contenido al conetenedor (recomended over add when posible)
+--from=<name> //references another stage in the multistage build
+
+ADD (<build_path>|<remote_url>) <destination_path>
+//copia el contenido al conetenedor
 //descoprime si es un tar, puede buscar coosas en remote urls.
 
 EXPOSE <PORT>
 //No autopublica, es meramente documentación de donde la imagen expone un servicio.
 
-ENV( <KEY>="<STRING>")+
+LABEL (<KEY>=<VALUE>)+
+//Documentation
+
+ENV (<KEY>="<STRING>")+
 //Establece variables de entorno para el container
+
+WORKDIR <directory>
 
 .dockerignore
 //en un archivo de este nombre el build path se ponen los path que van a ser excluidos del build context
+
+USER <user>
+//changes the user
+//could be used after 'RUN adduser -u 1000 -D <user>' to prevent later RUN and CMD from having root access
+
+ENTRYPOINT
+//like cmd, but is always excecuted, even if you pass in a custom command.
+
+ARG (<KEY>="<STRING>")+
+//similar to ENV, but set at build time with --build-arg
+//to use it at runtime, you can set ARG to ENV like:
+//ARG NAME=name1
+//ENV NAME=$NAME
+
+ONBUILD
+//Excecutes when this image is used in a FROM from another image.
+//Commands are excecuted in the downstream image.
+
+STOPSIGNAL <signal>
+//default is SIGTERM
+//determines which signal is sent to the process if it wishes to terminate
+
+CONCEPTS
+You have to clean after yourself when downloading an app. // rm -rf /var/cache/apk*
+Chaining commands avoids creation of an extra layer.
+
+//Dinamic CMD instructions. Will look up when needed
+//Variable interpolation $var ${var} ${var:-<default>} ${var:+<value_if_present>}

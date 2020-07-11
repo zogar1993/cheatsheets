@@ -1,0 +1,15 @@
+docker container inspect <container_name>
+
+//lists the containers
+docker container ls
+-a
+-s
+
+docker container stop <name> = stopea un container creado
+docker container start <name> = startea un container creado
+docker container rm <container_id>
+docker container rm $(docker container ls -aq) (remueve todos los containers)
+docker container kill <container_name>
+
+//lists resources of the containers
+docker container stats

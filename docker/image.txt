@@ -1,0 +1,25 @@
+docker image pull <image_name> (automatically done by docker container run)
+
+docker image ls
+- a
+
+Dockerfile = nombre del archivo al que le da bola docker
+docker image tag myalpine:latest zogar1993/myalpine:latest
+docker image push zogar1993/myalpine:latest
+
+//info of the image
+docker image inspect <image_name>
+
+docker image build -t myalpine:latest .
+//crea la imagen con el conetnido de Dockerfile
+--no-cache
+--pull
+-f <file_name>
+--cache-from <image_name>
+
+//shows the images that were used to create this image
+docker image history <image_name>
+
+//removes dangling images
+docker image prune
+-a

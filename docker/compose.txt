@@ -1,4 +1,24 @@
-dpcker compose creates a user defined network, and all containers get attached to it
+docker compose creates a user defined network, and all containers get attached to it
+en el yaml -it se hace con stdin_open: true y tty: true
+
+docker-compose run <service_name> (<command>)?
+--rm
 
 docker-compose down
+
+//si hay algunos corriendo, solo levanta los caidos
 docker-compose up
+-d
+--build
+--scale <service_name>=<amount>
+
+docker-compose ps (similar a ls)
+
+docker-compose exec
+
+docker-compose stop <service_name>
+
+docker-compose rm <service_name>
+
+docker-compose build
+
