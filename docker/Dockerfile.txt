@@ -39,6 +39,7 @@ USER <user>
 
 ENTRYPOINT
 //like cmd, but is always excecuted, even if you pass in a custom command.
+//if the entrypoint is set, custom commands will not be excecuted. They will be passed as arguments to the entrypoint. (los puede obtener con con 'exec "$@"')
 
 ARG (<KEY>="<STRING>")+
 //similar to ENV, but set at build time with --build-arg
