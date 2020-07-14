@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+    stretch-full:
+        image: mynginx-full
+        build:
+            context: .
+            args:
+                TYPE: full
+    stretch-light:
+        image: mynginx-light
+        build:
+            context: .
+            args:
+                TYPE: light
+    stretch-extras:
+        image: mynginx-extras
+        build:
+            context: .
+            args:
+                TYPE: extras
+                    

@@ -1,7 +1,9 @@
 FROM python:3.9-rc-alpine
 
-RUN pip install django
-#RUN apt-get update && apt-get install python3-django
+RUN apk add build-base && apk add postgresql-dev \
+ && pip install django \
+ && pip install psycopg2 \
+ && pip install pygresql
 
 WORKDIR /app
 

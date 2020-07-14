@@ -6,6 +6,20 @@ services:
     build: .
     ports:
       - 1322:1322
+    environment:
+      - POSTGRES_USER=demo
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=demo
+      - POSTGRES_HOST=pg
     volumes:
       - ./app:/app
+
+  pg:
+    image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_USER=demo
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=demo
+    volumes:
+      - ./db/create_table.sql:/docker-entrypoint-initdb.d/create_table.sql
 

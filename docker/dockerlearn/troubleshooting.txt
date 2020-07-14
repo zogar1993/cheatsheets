@@ -1,0 +1,6 @@
+For error "cannot stop container [...] permission denied"
+
+sudo apt-get purge --auto-remove apparmor
+sudo service docker restart
+docker system prune --all --volumes
+sudo apt install docker-compose
