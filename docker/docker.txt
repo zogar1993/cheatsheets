@@ -10,6 +10,8 @@ docker plugin install <plugin_name>
 
 docker login <3d_party_registry>
 
+docker info
+
 CONCEPTS
 Containers run in isolation thanks to  the linux feature "namespaces"
 net, pid and mnt (mount) are namespaces used to achieve isolation.

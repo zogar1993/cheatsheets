@@ -1,0 +1,7 @@
+Nodes are managers or workers.
+Managers schedule the tasks for the services.
+One manager is the leader, in charge of all management and orchestration.
+More than 7 managers is not recomended.
+Decisions need quorum
+quorum = (managers_amount - 1) / 2
+redundancy = managers - quorum

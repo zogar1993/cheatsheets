@@ -10,9 +10,9 @@ RUN (shell commands, happen and compile time)
 
 CMD (prompt commands, happen and run time)
 //En CMD es preferible usar el formato exec que el shell
+//If used after ENTRYPOINT, its values will be passed as parameters to the entrypoint y no custom command is sent.
 
 VOLUME <destination_path> -> monta un volume
-
 
 COPY <build_path>+ <destination_path>
 //copia el contenido al conetenedor (recomended over add when posible)

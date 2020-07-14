@@ -1,4 +1,7 @@
 docker network create <network_name>
+--driver=overlay (for docker swarm, since default is not supported)
+--network=<network_name>
+
 docker network ls
 
 //127.0.0.11 can be used as a DNS in used defined networks

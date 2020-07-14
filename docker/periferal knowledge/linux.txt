@@ -6,3 +6,4 @@ $(<command>) = permite usar el string output de <command> en otro comando
 touch <path> = crea un archivo en <path>
 mkdir <path> = crea un fichero en <path>
 nslookup = shows all network aliases
+watch = excecutes a command often, used mainly with ls

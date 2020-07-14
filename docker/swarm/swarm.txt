@@ -1,0 +1,36 @@
+docker swarm init
+
+docker node ls
+
+//services create tasks
+
+docker service create <image_name>
+--name=<service_name>
+--publish=<local_port>:<container_port>
+//similar to docker container run
+//in case of multiple replicas, docker swarm will take care of load balancing
+
+docker service ls
+
+docker service ps <service_name>
+
+docker service rm <service_name>
+
+docker service update <service_name>
+--replicas=<amount>
+--image=<image_name>
+--rolback
+--update-failure-action=rollback
+--update-parallelism=<amount>
+--task-history-limit=<amount> ( default 5)
+//the orchestrator tries to satisfy the state at all time
+//if one node dies, it creates a new one.
+//has many options for updating which are worth watching when trying to update.
+
+docker service scale <service_name>=<amount>
+
+docker service rollback <service_name>
+//rolls back service definitions
+//also updates
+
+docker service logs <service_name>
