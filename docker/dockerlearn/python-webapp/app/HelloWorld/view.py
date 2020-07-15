@@ -10,7 +10,7 @@ def home(request):
     pg_pass = os.getenv('POSTGRES_PASSWORD')
     pg_db = os.getenv('POSTGRES_DB')
     pg_host = os.getenv('POSTGRES_HOST')
-    conn = psycopg2.connect(host=pg_host,database=pg_db, user=pg_user, password=pg_pass)
+    conn = psycopg2.connect(host=pg_host, database=pg_db, user=pg_user, password=pg_pass)
 
     cur = conn.cursor()
     path = request.path
@@ -24,9 +24,20 @@ def home(request):
     cur.close()
 
     cur = conn.cursor()
-    sql = 'SELECT count(*) from requests;'
+    sql = 'SELECT requested_at, ip, host, path from requests ' + \
+        'order by requested_at desc limit 25;'
     cur.execute(sql)
-    value = cur.fetchone()[0]
+
+    entries = cur.fetchall()
+    result = ""
+    for entry in entries:
+        result += "<span>path: " + entry[3] + "</span><br/>"
+        result += "<span>client: " + entry[1] + "</span><br/>"
+        result += "<span>host: " + entry[2] + "</span><br/>"
+        result += "<span>datetime: " + entry[0] + "</span><br/>"
+        result += "<br/>"
+
+
     cur.close()
     conn.commit()
 
@@ -52,7 +63,7 @@ def home(request):
     #append_copy.close()
 
     #return HttpResponse(full_text)
-    return HttpResponse(value)
+    return HttpResponse(result)
 
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
