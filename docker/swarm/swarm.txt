@@ -22,7 +22,7 @@ docker service update <service_name>
 --rolback
 --update-failure-action=rollback
 --update-parallelism=<amount>
---task-history-limit=<amount> ( default 5)
+--task-history-limit=<amount> (default 5)
 //the orchestrator tries to satisfy the state at all time
 //if one node dies, it creates a new one.
 //has many options for updating which are worth watching when trying to update.

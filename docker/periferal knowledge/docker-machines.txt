@@ -6,4 +6,6 @@ docker-machine env <name>: gets command to run in de docker machine
 docker-machine active: tells you which docker machine you are talking to
 docker version
 docker-machine ip <name>: gets the ip of the docker machine <name>
-docker-machine (--driver [hypervisor]) <name>: 
+docker-machine (--driver [hypervisor]) <name>:
+
+docker-machine ssh <name>
